@@ -1,17 +1,18 @@
 
 <?php 
-add_filter('acf/fields/post_object/result/name=featured', 'add_event_date_to_featured_title', 10, 4);
-function add_event_date_to_featured_title($title, $post, $field, $post_id) {
-    // Get the date from your nested ACF field
-    $event_date = get_field('dates_start', $post->ID); // if your field key is actually "dates.start", see note below
-
-    if ($event_date) {
-        // Format the date (adjust format as needed)
-        $formatted_date = date('M j, Y', strtotime($event_date));
-
-        // Append the date to the event title
-        $title .= ' — ' . $formatted_date;
+    add_filter('acf/fields/post_object/result/name=featured', 'add_event_date_to_featured_title', 10, 4);
+    function add_event_date_to_featured_title($title, $post, $field, $post_id) {
+        // Get the date from your nested ACF field
+        $event_date = get_field('dates_start', $post->ID); // if your field key is actually "dates.start", see note below
+    
+        if ($event_date) {
+            // Format the date (adjust format as needed)
+            $formatted_date = date('M j, Y', strtotime($event_date));
+    
+            // Append the date to the event title
+            $title .= ' — ' . $formatted_date;
+        }
+    
+        return $title;
     }
-
-    return $title;
-}
+?>
