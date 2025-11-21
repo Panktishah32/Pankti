@@ -1,6 +1,6 @@
 <?php
 
-function passion_city_latest_events($posts_per_page)
+function latest_events($posts_per_page)
 {
     // Get today's date in Ymd format
     $today = date('Ymd');
